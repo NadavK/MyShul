@@ -1,0 +1,46 @@
+<form>
+  <ion-list class="personal_list">
+
+    <ion-item>
+      <ion-label floating>{{ 'GENDER' | translate }}</ion-label>
+      <ion-select id="gender" interface="popover" left [(ngModel)]="user.gender" name="gender">
+        <ion-option value="f">{{ 'FEMALE' | translate }}</ion-option>
+        <ion-option value="m">{{ 'MALE' | translate }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>{{ 'FULL_NAME' | translate }}</ion-label>
+      <ion-input id="full_name" type="text" [(ngModel)]="user.full_name" name="full_name"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="user.male">
+      <ion-label floating>{{ 'USER_TITLE' | translate }}</ion-label>
+      <ion-select id="title" interface="popover" left [(ngModel)]="user.title" name="title">
+        <ion-option value="cohen">{{ 'COHEN' | translate }}</ion-option>
+        <ion-option value="levi">{{ 'LEVI' | translate }}</ion-option>
+        <ion-option value="yisrael">{{ 'YISRAEL' | translate }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="user.male">
+      <ion-label>{{ 'BARMITZVAHED' | translate }}</ion-label>
+      <ion-checkbox [checked]="user.bar_mitzvahed" [(ngModel)]="user.bar_mitzvahed" name="bar_mitzvahed"></ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="user.male">      <!-- Setting the *ngIf here caused the page to vertically reposition when changing gender. Setting min-height fixed the issue -->
+      <ion-label floating>{{ 'BARMITZVA_PARASHA' | translate }}</ion-label>
+      <ion-select id="bar_mitzvah_parasha" interface="popover" left [(ngModel)]="user.bar_mitzvah_parasha" name="bar_mitzvah_parasha">
+        <ion-option *ngFor="let parasha of parashas" value={{parasha.id}}>{{parasha.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <!--button ion-button type="button" *ngIf="signup" id="back_personal" color="primary" (click)="clickedBack()">{{ 'BACK_BUTTON_TEXT' | translate }}</button-->
+    <button ion-button type="submit" *ngIf="signup" id="next_personal" color="primary" (click)="clickedNext()">{{ 'NEXT_BUTTON' | translate }}</button>
+    <button ion-button type="submit" *ngIf="edit" id="save_personal" right color="primary" block (click)="clickedNext()">{{ 'SAVE_BUTTON' | translate }}</button>
+  </div>
+
+</form>

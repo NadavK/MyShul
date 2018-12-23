@@ -1,0 +1,27 @@
+<form>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>{{ 'FIRST_NAME' | translate }}</ion-label>
+      <ion-input id="first_name" type="text" [readonly]="edit" [(ngModel)]="user.first_name" name="first_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>{{ 'LAST_NAME' | translate }}</ion-label>
+      <ion-input id="last_name" type="text" [readonly]="edit" [(ngModel)]="user.last_name" name="last_name"></ion-input>
+    </ion-item>
+
+
+    <div *ngIf="signup">
+      <button ion-button type="button" color="primary" clear item-left (click)="presentVerificationSignUp()">
+        <div *ngIf="!verified_user_details">{{ 'SIGNUP_CODE_BUTTON' | translate }}&nbsp;&nbsp;<ion-icon name='keypad'></ion-icon> </div>
+        <div *ngIf="verified_user_details">{{ 'SIGNUP_CODE_BUTTON_OK' | translate:{details: verified_user_details} }}  </div>
+      </button>
+    </div>
+
+    <div padding *ngIf="signup">
+      <button ion-button type="submit" id="next_account" color="primary" (click)="clickedNext()">{{ 'NEXT_BUTTON' | translate }}</button>
+    </div>
+
+  </ion-list>
+</form>

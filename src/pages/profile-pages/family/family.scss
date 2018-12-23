@@ -1,0 +1,20 @@
+page-family {
+.no-lines {
+  border-bottom: 0px !important;
+  }
+}
+
+.item-no-lines {
+  outline: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+.toast-message {
+  white-space: pre;
+}
+
+.no-padding {
+  padding: 0px !important;
+  text-overflow: ellipsis !important;
+}

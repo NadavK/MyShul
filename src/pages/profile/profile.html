@@ -1,0 +1,66 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'PROFILE_TITLE' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>{{ 'NAME_PAGE' | translate }}</ion-card-header>
+    <ion-card-content>
+      <!--page-account mode="edit" (data)="user"></page-account-->
+      <page-account mode="edit"></page-account>
+    </ion-card-content>
+  </ion-card>
+
+  <!--ion-card>
+    <ion-card-header>Password</ion-card-header>
+    <ion-card-content>
+      <page-password mode="edit"></page-password>
+    </ion-card-content>
+  </ion-card-->
+
+  <ion-card>
+    <ion-card-header>{{ 'FAMILY_PAGE' | translate }}</ion-card-header>
+    <ion-card-content>
+      <page-family mode="edit"></page-family>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="user && user.male">
+    <ion-card-header>{{ 'DUTIES_PAGE' | translate }}</ion-card-header>
+    <ion-card-content>
+      <page-duties mode="edit"></page-duties>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>{{ 'CONTACT_PAGE' | translate }}</ion-card-header>
+    <ion-card-content>
+      <page-contact mode="edit"></page-contact>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>{{ 'PERSONAL_PAGE' | translate }}</ion-card-header>
+    <ion-card-content>
+      <page-personal mode="edit"></page-personal>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>{{ 'PARENTS_PAGE' | translate }}</ion-card-header>
+    <ion-card-content>
+      <page-parent mode="edit"></page-parent>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header *ngIf="from_welcome_page">
+
+  <ion-navbar>
+    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content *ngIf="from_welcome_page">
+  <form>
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>{{ 'FIRST_NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="credentials.first_name" name="first_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>{{ 'LAST_NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="credentials.last_name" name="last_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="credentials.password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block (click)="login()">{{ 'LOGIN_BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,21 @@
+<form>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+      <ion-input id="email" type="email" [(ngModel)]="user.email" name="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>{{ 'PHONE' | translate }}</ion-label>
+      <ion-input id="phone" type="tel" pattern="[0-9\-]*" [(ngModel)]="user.phone" name="phone"></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button ion-button type="button" *ngIf="signup" id="back_contact" color="primary" (click)="clickedBack()">{{ 'BACK_BUTTON_TEXT' | translate }}</button>
+      <button ion-button type="submit" *ngIf="signup" id="next_contact" color="primary" (click)="clickedNext()">{{ 'NEXT_BUTTON' | translate }}</button>
+      <button ion-button type="submit" *ngIf="edit" id="save_contact" right color="primary" block (click)="clickedNext()">{{ 'SAVE_BUTTON' | translate }}</button>
+    </div>
+
+  </ion-list>
+</form>

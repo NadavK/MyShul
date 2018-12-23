@@ -1,0 +1,78 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'ITEM_CREATE_TITLE' | translate }}</ion-title>
+    <ion-buttons>
+      <button ion-button type="button" color="primary" (click)="next()">הבא</button>
+      <button *ngIf="slides.isEnd()" ion-button type="button" color="primary" (click)="back()">קודם</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="no-scroll">
+  <ion-slides #slides pager="true" dir="{{platform.dir()}}"> <!-- dir fixes blank slide problem in hebrew (actual dir value had no impact) -->
+    <ion-slide>
+      <form dir="rtl" *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+        <input dir="rtl" type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)"/>
+        <div class="profile-image-wrapper" (click)="getPicture()">
+          <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
+            <ion-icon name="add"></ion-icon>
+            <div>
+              {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+            </div>
+          </div>
+          <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+        </div>
+        <ion-list dir="rtl">
+
+          <ion-item dir="rtl">
+            <ion-label floating dir="rtl">שדה 1א</ion-label>
+            <ion-input dir="rtl" type="text" name="phone"></ion-input>
+          </ion-item>
+
+          <ion-item dir="rtl">
+            <ion-input dir="rtl" type="text" placeholder="שדה 2א" formControlName="name"></ion-input>
+          </ion-item>
+
+          <ion-item dir="ltr">
+            <ion-input dir="ltr" type="text" placeholder="שדה 3א"></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </form>
+    </ion-slide>
+    <ion-slide>
+      <form dir="ltr" *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+        <input dir="ltr" type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)"/>
+        <div class="profile-image-wrapper" (click)="getPicture()">
+          <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
+            <ion-icon name="add"></ion-icon>
+            <div>
+              {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+            </div>
+          </div>
+          <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+        </div>
+        <ion-list dir="ltr">
+
+          <ion-item dir="ltr">
+            <ion-label floating dir="ltr">שדה 1ב</ion-label>
+            <ion-input dir="ltr" type="text" name="phone"></ion-input>
+          </ion-item>
+
+          <ion-item dir="ltr">
+            <ion-input dir="ltr" type="text" placeholder="שדה ב2" formControlName="name"></ion-input>
+          </ion-item>
+
+          <ion-item dir="rtl">
+            <ion-input dir="rtl" type="text" placeholder="שדה ב3"></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </form>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

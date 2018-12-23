@@ -1,0 +1,171 @@
+<form>
+  <ion-list>
+
+    <ion-row>
+    <ion-item>
+      <ion-label floating>{{ 'FATHER_NAME' | translate }}</ion-label>
+      <ion-input id="father_full_name" type="text" [disabled]="user.father.read_only" [(ngModel)]="user.father.full_name" name="father_full_name"></ion-input>
+    </ion-item>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col col-8>
+        <ion-item>
+        <ion-label stacked>{{ 'DOD_MONTH' | translate }}</ion-label>
+        <ion-select id="father_dod_month" interface="popover" left [disabled]="user.father.read_only" [(ngModel)]="user.father.dod_month" name="father_dod_month">
+          <ion-option value="null"></ion-option>
+          <ion-option value=1>{{ 'MONTH_1' | translate }}</ion-option>
+          <ion-option value=2>{{ 'MONTH_2' | translate }}</ion-option>
+          <ion-option value=3>{{ 'MONTH_3' | translate }}</ion-option>
+          <ion-option value=4>{{ 'MONTH_4' | translate }}</ion-option>
+          <ion-option value=5>{{ 'MONTH_5' | translate }}</ion-option>
+          <ion-option value=6>{{ 'MONTH_6' | translate }}</ion-option>
+          <ion-option value=7>{{ 'MONTH_7' | translate }}</ion-option>
+          <ion-option value=8>{{ 'MONTH_8' | translate }}</ion-option>
+          <ion-option value=9>{{ 'MONTH_9' | translate }}</ion-option>
+          <ion-option value=10>{{ 'MONTH_10' | translate }}</ion-option>
+          <ion-option value=11>{{ 'MONTH_11' | translate }}</ion-option>
+          <ion-option value=12>{{ 'MONTH_12' | translate }}</ion-option>
+          <ion-option value=13>{{ 'MONTH_13' | translate }}</ion-option>
+        </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-4>
+        <ion-item>
+        <ion-label stacked>{{ 'DOD_DAY' | translate }}</ion-label>
+        <ion-select id="father_dod_day" interface="popover" left [disabled]="user.father.read_only" [(ngModel)]="user.father.dod_day" name="father_dod_day">
+          <ion-option value="null"></ion-option>
+          <ion-option value=1>{{ 'DAY_1' | translate }}</ion-option>
+          <ion-option value=2>{{ 'DAY_2' | translate }}</ion-option>
+          <ion-option value=3>{{ 'DAY_3' | translate }}</ion-option>
+          <ion-option value=4>{{ 'DAY_4' | translate }}</ion-option>
+          <ion-option value=5>{{ 'DAY_5' | translate }}</ion-option>
+          <ion-option value=6>{{ 'DAY_6' | translate }}</ion-option>
+          <ion-option value=7>{{ 'DAY_7' | translate }}</ion-option>
+          <ion-option value=8>{{ 'DAY_8' | translate }}</ion-option>
+          <ion-option value=9>{{ 'DAY_9' | translate }}</ion-option>
+          <ion-option value=10>{{ 'DAY_10' | translate }}</ion-option>
+          <ion-option value=11>{{ 'DAY_11' | translate }}</ion-option>
+          <ion-option value=12>{{ 'DAY_12' | translate }}</ion-option>
+          <ion-option value=13>{{ 'DAY_13' | translate }}</ion-option>
+          <ion-option value=14>{{ 'DAY_14' | translate }}</ion-option>
+          <ion-option value=15>{{ 'DAY_15' | translate }}</ion-option>
+          <ion-option value=16>{{ 'DAY_16' | translate }}</ion-option>
+          <ion-option value=17>{{ 'DAY_17' | translate }}</ion-option>
+          <ion-option value=18>{{ 'DAY_18' | translate }}</ion-option>
+          <ion-option value=19>{{ 'DAY_19' | translate }}</ion-option>
+          <ion-option value=20>{{ 'DAY_20' | translate }}</ion-option>
+          <ion-option value=21>{{ 'DAY_21' | translate }}</ion-option>
+          <ion-option value=22>{{ 'DAY_22' | translate }}</ion-option>
+          <ion-option value=23>{{ 'DAY_23' | translate }}</ion-option>
+          <ion-option value=24>{{ 'DAY_24' | translate }}</ion-option>
+          <ion-option value=25>{{ 'DAY_25' | translate }}</ion-option>
+          <ion-option value=26>{{ 'DAY_26' | translate }}</ion-option>
+          <ion-option value=27>{{ 'DAY_27' | translate }}</ion-option>
+          <ion-option value=28>{{ 'DAY_28' | translate }}</ion-option>
+          <ion-option value=29>{{ 'DAY_29' | translate }}</ion-option>
+          <ion-option value=30>{{ 'DAY_30' | translate }}</ion-option>
+        </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+    <ion-item>
+      <ion-label floating>{{ 'FATHER_FATHER_NAME' | translate }}</ion-label>
+      <ion-input id="father_father_full_name" type="text" [disabled]="user.father.read_only" [(ngModel)]="user.father.father_full_name" name="father_father_full_name"></ion-input>
+    </ion-item>
+    </ion-row>
+
+    <ion-row>
+    <ion-item *ngIf="!user.male">
+      <ion-label>{{ 'USER_TITLE' | translate }}</ion-label>
+      <ion-select id="title" interface="popover" left [disabled]="user.father.read_only" [(ngModel)]="user.father.title" name="title">
+        <ion-option value="cohen">{{ 'COHEN' | translate }}</ion-option>
+        <ion-option value="levi">{{ 'LEVI' | translate }}</ion-option>
+        <ion-option value="yisrael">{{ 'YISRAEL' | translate }}</ion-option>
+      </ion-select>
+    </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-item>
+        <ion-label floating>{{ 'MOTHER_NAME' | translate }}</ion-label>
+        <ion-input id="mother_full_name" type="text" [disabled]="user.mother.read_only" [(ngModel)]="user.mother.full_name" name="mother_full_name"></ion-input>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-8>
+        <ion-item>
+        <ion-label stacked>{{ 'DOD_MONTH' | translate }}</ion-label>
+        <ion-select id="mother_dod_month" interface="popover" left [disabled]="user.mother.read_only" [(ngModel)]="user.mother.dod_month" name="mother_dod_month">
+          <ion-option value="null"></ion-option>
+          <ion-option value=1>{{ 'MONTH_1' | translate }}</ion-option>
+          <ion-option value=2>{{ 'MONTH_2' | translate }}</ion-option>
+          <ion-option value=3>{{ 'MONTH_3' | translate }}</ion-option>
+          <ion-option value=4>{{ 'MONTH_4' | translate }}</ion-option>
+          <ion-option value=5>{{ 'MONTH_5' | translate }}</ion-option>
+          <ion-option value=6>{{ 'MONTH_6' | translate }}</ion-option>
+          <ion-option value=7>{{ 'MONTH_7' | translate }}</ion-option>
+          <ion-option value=8>{{ 'MONTH_8' | translate }}</ion-option>
+          <ion-option value=9>{{ 'MONTH_9' | translate }}</ion-option>
+          <ion-option value=10>{{ 'MONTH_10' | translate }}</ion-option>
+          <ion-option value=11>{{ 'MONTH_11' | translate }}</ion-option>
+          <ion-option value=12>{{ 'MONTH_12' | translate }}</ion-option>
+          <ion-option value=13>{{ 'MONTH_13' | translate }}</ion-option>
+        </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-4>
+        <ion-item>
+        <ion-label stacked>{{ 'DOD_DAY' | translate }}</ion-label>
+        <ion-select id="mother_dod_day" interface="popover" left [disabled]="user.mother.read_only" [(ngModel)]="user.mother.dod_day" name="mother_dod_day">
+          <ion-option value="null"></ion-option>
+          <ion-option value=1>{{ 'DAY_1' | translate }}</ion-option>
+          <ion-option value=2>{{ 'DAY_2' | translate }}</ion-option>
+          <ion-option value=3>{{ 'DAY_3' | translate }}</ion-option>
+          <ion-option value=4>{{ 'DAY_4' | translate }}</ion-option>
+          <ion-option value=5>{{ 'DAY_5' | translate }}</ion-option>
+          <ion-option value=6>{{ 'DAY_6' | translate }}</ion-option>
+          <ion-option value=7>{{ 'DAY_7' | translate }}</ion-option>
+          <ion-option value=8>{{ 'DAY_8' | translate }}</ion-option>
+          <ion-option value=9>{{ 'DAY_9' | translate }}</ion-option>
+          <ion-option value=10>{{ 'DAY_10' | translate }}</ion-option>
+          <ion-option value=11>{{ 'DAY_11' | translate }}</ion-option>
+          <ion-option value=12>{{ 'DAY_12' | translate }}</ion-option>
+          <ion-option value=13>{{ 'DAY_13' | translate }}</ion-option>
+          <ion-option value=14>{{ 'DAY_14' | translate }}</ion-option>
+          <ion-option value=15>{{ 'DAY_15' | translate }}</ion-option>
+          <ion-option value=16>{{ 'DAY_16' | translate }}</ion-option>
+          <ion-option value=17>{{ 'DAY_17' | translate }}</ion-option>
+          <ion-option value=18>{{ 'DAY_18' | translate }}</ion-option>
+          <ion-option value=19>{{ 'DAY_19' | translate }}</ion-option>
+          <ion-option value=20>{{ 'DAY_20' | translate }}</ion-option>
+          <ion-option value=21>{{ 'DAY_21' | translate }}</ion-option>
+          <ion-option value=22>{{ 'DAY_22' | translate }}</ion-option>
+          <ion-option value=23>{{ 'DAY_23' | translate }}</ion-option>
+          <ion-option value=24>{{ 'DAY_24' | translate }}</ion-option>
+          <ion-option value=25>{{ 'DAY_25' | translate }}</ion-option>
+          <ion-option value=26>{{ 'DAY_26' | translate }}</ion-option>
+          <ion-option value=27>{{ 'DAY_27' | translate }}</ion-option>
+          <ion-option value=28>{{ 'DAY_28' | translate }}</ion-option>
+          <ion-option value=29>{{ 'DAY_29' | translate }}</ion-option>
+          <ion-option value=30>{{ 'DAY_30' | translate }}</ion-option>
+        </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button type="button" *ngIf="signup" id="back_parent" color="primary" (click)="clickedBack()">{{ 'BACK_BUTTON_TEXT' | translate }}</button>
+    <button ion-button type="submit" *ngIf="signup" id="next_parent" color="primary" (click)="clickedNext()">{{ 'NEXT_BUTTON' | translate }}</button>
+    <button ion-button type="submit" *ngIf="edit" id="save_parent" right color="primary" block (click)="clickedNext()" [disabled]="user.mother.read_only && user.father.read_only">{{ 'SAVE_BUTTON' | translate }}</button>
+  </div>
+</form>

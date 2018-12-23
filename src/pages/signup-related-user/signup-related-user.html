@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="no-scroll">
+  <ion-slides #slides (ionSlideDrag)="onIonDrag($event)" dir="{{platform.dir()}}">  <!-- dir fixes blank slide problem in hebrew (actual dir value had no impact) -->
+    <ion-slide>
+      <h1>{{ 'PERSONAL_PAGE' | translate }}</h1>
+      <page-personal mode="signup" (complete)="complete($event)" default_gender="default_gender"></page-personal>
+    </ion-slide>
+
+    <ion-slide *ngIf="data.isSpouse(user)">
+      <h1>{{ 'PARENTS_PAGE' | translate }}</h1>
+      <page-parent mode="signup" (complete)="complete($event)"></page-parent>
+    </ion-slide>
+
+    <ion-slide *ngIf="user.male">
+      <h1>{{ 'DUTIES_PAGE' | translate }}</h1>
+      <page-duties mode="signup" (complete)="complete($event)"></page-duties>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>

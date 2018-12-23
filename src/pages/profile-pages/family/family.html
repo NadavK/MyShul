@@ -1,0 +1,102 @@
+<form>
+  <ion-list>
+
+    <ion-row *ngIf="user.verification_code" (click)="showPasswordText=!showPasswordText; showVerificationCodeHelp(showPasswordText)">
+      <ion-col>
+        <ion-item class="item no-padding item-no-lines">
+          <ion-label>{{ 'SIGNUP_CODE_TITLE' | translate }}:</ion-label>
+          <ion-input class="no-padding" id="verification_code_text"     type="number"   *ngIf="showPasswordText"  [readonly]="true" [(ngModel)]="user.verification_code" name="verification_code"></ion-input>
+          <ion-input class="no-padding" id="verification_code_password" type="password" *ngIf="!showPasswordText" [readonly]="true" [(ngModel)]="user.verification_code" name="verification_code"></ion-input>
+          <button ion-button clear color="dark" type="button" item-left icon-only>
+            <ion-icon item-right style="margin-right: 5px; margin-left: 5px;" name='information-circle'></ion-icon>
+          </button>
+          <!--button ion-button clear color="dark" type="button" item-left icon-only>
+            <ion-icon style="margin-right: 5px; margin-left: 5px;" *ngIf="!showPasswordText" name="eye"> </ion-icon>
+            <ion-icon style="margin-right: 5px; margin-left: 5px;" *ngIf="showPasswordText" name="eye-off"> </ion-icon>
+          </button-->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+<!--
+    <ion-row *ngIf="user.spouse">
+      <ion-label>{{ 'SPOUSE' | translate }}</ion-label>
+    </ion-row>
+    <ion-row *ngIf="!user.spouse">
+      <button ion-button color="primary" clear icon-start icon-only (click)="clickedAddSpouse()" *ngIf="!user.spouse" class="no-padding">
+        <ion-icon style="margin-right: 5px; margin-left: 5px" name='add-circle'></ion-icon>
+        {{ 'SPOUSE' | translate }}
+      </button>
+    </ion-row>
+    <ion-row *ngIf="user.spouse || user.children.length">
+      <ion-col col-8>
+        <ion-item class="item no-padding no-lines item-block item-md item-input">
+          <ion-label>{{ 'FIRST_NAME_SHORT_TEXT' | translate }}</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col col-4>
+        <ion-item class="item no-padding no-lines item-block item-md item-input" (click)="showVerificationCodeHelp()">
+          <ion-label text-wrap>
+            {{ 'SIGNUP_CODE_LABEL' | translate }}
+            <ion-icon style="margin-right: 5px; margin-left: 5px;" name='information-circle'></ion-icon>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+-->
+    <ion-row *ngIf="user.spouse">
+      <ion-col col-12 (click)="relatedUserWizard(user.spouse)">
+        <ion-item class="item no-padding">
+          <ion-input class="item no-padding" id="spouse_name"     type="text"     [readonly]="true" [(ngModel)]="user.spouse.first_name" name="spouse_first_name"></ion-input>
+          <button ion-button class="item no-padding" clear type="button" item-right icon-only>
+            <ion-icon *ngIf="!user.spouse.read_only" name="settings"> </ion-icon>
+          </button>
+        </ion-item>
+      </ion-col>
+      <!--ion-col col-4 (click)="showPasswordText_spouse=!showPasswordText_spouse; showVerificationCodeHelp(showPasswordText_spouse)">
+        <ion-item *ngIf="user.spouse.verification_code" class="item no-padding">
+          <ion-input class="item no-padding" id="spouse_verification_code_text"     type="text"     *ngIf="showPasswordText_spouse" [readonly]="true" [(ngModel)]="user.spouse.verification_code" name="spouse_verification_code"></ion-input>
+          <ion-input class="item no-padding" id="spouse_verification_code_password" type="password" *ngIf="!showPasswordText_spouse" [readonly]="true" [(ngModel)]="user.spouse.verification_code" name="spouse_verification_code"></ion-input>
+          <button ion-button class="item no-padding" clear color="dark" type="button" item-right icon-only>
+            <ion-icon *ngIf="!showPasswordText_spouse" name="eye"> </ion-icon>
+            <ion-icon *ngIf="showPasswordText_spouse" name="eye-off"> </ion-icon>
+          </button>
+        </ion-item>
+      </ion-col-->
+    </ion-row>
+
+    <ion-row>
+      <button ion-button color="primary" clear icon-start icon-only (click)="clickedAddChild()" class="no-padding">
+        <ion-icon style="margin-right: 5px; margin-left: 5px" name='add-circle'></ion-icon>
+        {{ 'CHILD' | translate }}
+      </button>
+    </ion-row>
+
+    <ion-row *ngFor="let child of user.children; let i = index">
+      <ion-col col-12 (click)="relatedUserWizard(child)">
+        <ion-item class="item no-padding">
+          <ion-input class="item no-padding" id="child_name_{{i}}_text"     type="text"     [readonly]="true" [(ngModel)]="child.first_name" name="first_name{{i}}"></ion-input>
+          <button ion-button class="item no-padding" clear type="button" item-right icon-only>
+            <ion-icon *ngIf="!child.read_only" name="settings"> </ion-icon>
+          </button>
+        </ion-item>
+      </ion-col>
+      <!--ion-col col-4 (click)="showPasswordText_child[i]=!showPasswordText_child[i]; showVerificationCodeHelp(showPasswordText_child[i])">
+        <ion-item *ngIf="child.verification_code" class="item no-padding">
+          <ion-input class="item no-padding" id="child_verification_code_{{i}}_text"     type="text"     *ngIf="showPasswordText_child[i]" [readonly]="true" [(ngModel)]="child.verification_code" name="child_verification_code_{{i}}"></ion-input>
+          <ion-input class="item no-padding" id="child_verification_code_{{i}}_password" type="password" *ngIf="!showPasswordText_child[i]" [readonly]="true" [(ngModel)]="child.verification_code" name="child_verification_code_{{i}}"></ion-input>
+          <button ion-button class="item no-padding" clear color="dark" type="button" item-right icon-only>
+            <ion-icon *ngIf="!showPasswordText_child[i]" name="eye"> </ion-icon>
+            <ion-icon *ngIf="showPasswordText_child[i]" name="eye-off"> </ion-icon>
+          </button>
+        </ion-item>
+      </ion-col-->
+    </ion-row>
+
+    <div padding>
+      <button ion-button type="button" *ngIf="signup" id="back_family" color="primary" (click)="clickedBack()">{{ 'BACK_BUTTON_TEXT' | translate }} </button>
+      <button ion-button type="submit" *ngIf="signup" id="next_family" color="primary" (click)="clickedNext()">{{ 'DONE_BUTTON' | translate }}      </button>
+    </div>
+
+  </ion-list>
+</form>

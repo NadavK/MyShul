@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="no-scroll">
+  <ion-slides #slides (ionSlideDrag)="onIonDrag($event)" dir="{{platform.dir()}}"> <!-- dir fixes blank slide problem in hebrew (actual dir value had no impact) -->
+
+    <ion-slide>
+      <h1>{{ 'NAME_PAGE' | translate }}</h1>
+      <page-account mode="signup" (complete)="complete($event)" (data)="user"></page-account>
+    </ion-slide>
+
+    <ion-slide>
+      <h1>{{ 'PASSWORD_PAGE' | translate }}</h1>
+      <page-password mode="signup" (complete)="complete($event)"></page-password>
+    </ion-slide>
+
+    <ion-slide>
+      <h1>{{ 'PERSONAL_PAGE' | translate }}</h1>
+      <page-personal mode="signup" (complete)="complete($event)"></page-personal>
+    </ion-slide>
+
+    <ion-slide>
+      <h1>{{ 'PARENTS_PAGE' | translate }}</h1>
+      <page-parent mode="signup" (complete)="complete($event)"></page-parent>
+    </ion-slide>
+
+    <ion-slide *ngIf="user && user.male">
+      <h1>{{ 'DUTIES_PAGE' | translate }}</h1>
+      <page-duties mode="signup" (complete)="complete($event)"></page-duties>
+    </ion-slide>
+
+    <ion-slide>
+      <h1>{{ 'CONTACT_PAGE' | translate }}</h1>
+      <page-contact mode="signup" (complete)="complete($event)"></page-contact>
+    </ion-slide>
+
+    <ion-slide>
+      <h1>{{ 'FAMILY_PAGE' | translate }}</h1>
+      <page-family mode="signup" (complete)="complete($event)"></page-family>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>

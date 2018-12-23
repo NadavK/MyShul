@@ -1,0 +1,23 @@
+<form>
+  <ion-list>
+
+    <ion-item *ngFor="let duty of relevantDuties">
+      <ion-label>{{ duty.name | translate }}</ion-label>
+      <!--ion-checkbox [(ngModel)]="user.duties[duty.id]" name="duty.name" (click)="updateCheckedOptions(duty.id, $event)"></ion-checkbox-->
+      <ion-checkbox [checked]="checkIfChecked(duty.id)" name="duty.name" (click)="updateCheckedOptions(duty.id, $event)"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>{{ 'NOTES' | translate }}</ion-label>
+      <ion-textarea id="user_notes" autosize rows="1" [(ngModel)]="user.user_notes" name="user_notes"></ion-textarea>
+    </ion-item>
+
+
+    <div padding>
+      <button ion-button type="button" *ngIf="signup" id="back_duties" color="primary" (click)="clickedBack()">{{ 'BACK_BUTTON_TEXT' | translate }}</button>
+      <button ion-button type="submit" *ngIf="signup" id="next_duties" color="primary" (click)="clickedNext()">{{ 'NEXT_BUTTON' | translate }}</button>
+      <button ion-button type="submit" *ngIf="edit" id="save_duties" right color="primary" (click)="clickedNext()" block>{{ 'SAVE_BUTTON' | translate }}</button>
+    </div>
+
+  </ion-list>
+</form>
